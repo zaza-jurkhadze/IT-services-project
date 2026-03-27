@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechSol Georgia — თანამედროვე IT ინფრასტრუქტურა: სისტემური ადმინისტრირება, ქსელი და კიბერუსაფრთხოება." data-i18n-key="doc.desc" />
+  <title data-i18n-key="doc.title">TechSol Georgia | IT ინფრასტრუქტურის მომსახურება</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" id="top">
+        <span class="logo-mark">TS</span>
+        <span class="logo-text">TechSol <span class="logo-accent">Georgia</span></span>
+      </a>
+      <div class="header-end">
+        <nav class="main-nav" aria-label="მთავარი ნავიგაცია">
+          <a href="index.html" data-i18n="nav.home">მთავარი</a>
+          <a href="#სერვისები" data-i18n="nav.services">სერვისები</a>
+          <a href="#პაკეტები" data-i18n="nav.packages">პაკეტები</a>
+          <a href="#ჩვენს-შესახებ" data-i18n="nav.about">ჩვენს შესახებ</a>
+          <a href="#კონტაქტი" class="nav-cta" data-i18n="nav.contact">დაგვიკავშირდით</a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="ენა" data-i18n-aria="lang.label">
+          <button type="button" class="lang-btn" data-set-lang="ka" aria-pressed="true">KA</button>
+          <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="მენიუს გახსნა" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-badge">techsol-georgia</p>
+          <h1 data-i18n="hero.title">თანამედროვე IT ინფრასტრუქტურა</h1>
+          <p class="hero-lead" data-i18n="hero.lead1">
+            პროფესიონალური სისტემური ადმინისტრირება, დაცული ქსელის კონფიგურაცია და ოპერატიული ტექნიკური მხარდაჭერა.
+          </p>
+          <p class="hero-lead" data-i18n="hero.lead2">
+            ჩვენ ვმართავთ თქვენს ტექნოლოგიებს, რათა თქვენ ფოკუსირდეთ ბიზნესზე.
+          </p>
+          <div class="hero-actions">
+            <a href="#პაკეტები" class="btn btn-primary" data-i18n="hero.cta">პაკეტები და ფასები</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="hero-diagram hero-diagram--sketch" viewBox="0 0 480 405" xmlns="http://www.w3.org/2000/svg">
+            <g class="sketch-cloud" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 120 95 Q 95 95 95 118 Q 95 142 125 145 L 335 145 Q 365 142 365 115 Q 365 88 338 88 Q 328 62 295 62 Q 270 48 240 58 Q 210 45 180 62 Q 148 55 130 78 Q 118 78 120 95 Z" />
+              <path d="M 210 78 Q 240 68 268 78" opacity="0.55" />
+            </g>
+            <text class="sketch-label" x="240" y="118" text-anchor="middle">WAN / CLOUD</text>
+            <line class="sketch-link" x1="240" y1="148" x2="240" y2="188" />
+            <text class="sketch-label sketch-label--small" x="240" y="168" text-anchor="middle">CORE</text>
+            <circle class="sketch-hub-ring" cx="240" cy="208" r="36" />
+            <circle class="sketch-hub-core" cx="240" cy="208" r="14" />
+            <line class="sketch-link" x1="240" y1="244" x2="240" y2="268" />
+            <line class="sketch-link" x1="240" y1="208" x2="108" y2="268" />
+            <line class="sketch-link" x1="240" y1="208" x2="372" y2="268" />
+            <g class="sketch-rack" transform="translate(188 268)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="0" y="0" width="104" height="118" rx="8" />
+              <line x1="12" y1="22" x2="92" y2="22" />
+              <line x1="12" y1="42" x2="92" y2="42" />
+              <line x1="12" y1="62" x2="92" y2="62" />
+              <line x1="12" y1="82" x2="92" y2="82" />
+              <circle cx="24" cy="32" r="3" class="sketch-dot" />
+              <circle cx="24" cy="52" r="3" class="sketch-dot" />
+              <circle cx="24" cy="72" r="3" class="sketch-dot" />
+              <rect x="34" y="26" width="48" height="8" rx="2" class="sketch-slot" />
+              <rect x="34" y="46" width="40" height="8" rx="2" class="sketch-slot" />
+              <rect x="34" y="66" width="52" height="8" rx="2" class="sketch-slot" />
+            </g>
+            <text class="sketch-label" x="240" y="398" text-anchor="middle">SERVER / VM</text>
+            <g class="sketch-fw" transform="translate(40 278)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="0" y="0" width="88" height="72" rx="6" />
+              <path d="M 12 20 L 76 20 M 12 36 L 60 36 M 12 52 L 70 52" opacity="0.7" />
+              <polyline points="44,14 50,20 44,26" class="sketch-accent-stroke" />
+            </g>
+            <text class="sketch-label sketch-label--small" x="84" y="366" text-anchor="middle">FW</text>
+            <g class="sketch-sec" transform="translate(352 278)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="0" y="0" width="88" height="72" rx="6" />
+              <path d="M 44 12 L 62 22 V 42 Q 44 58 26 42 V 22 Z" class="sketch-accent-stroke" />
+              <path d="M 44 28 L 44 48 M 36 38 L 52 38" opacity="0.6" />
+            </g>
+            <text class="sketch-label sketch-label--small" x="396" y="366" text-anchor="middle">SEC</text>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <section id="სერვისები" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="services.title">სერვისები</h2>
+        <p class="section-subtitle" data-i18n="services.sub">აირჩიეთ მიმართულება — დეტალური აღწერა ცალკე გვერდზე.</p>
+        <ul class="feature-grid">
+          <li>
+            <a href="service-network.html" class="feature-card feature-card-link">
+              <h3 data-i18n="svc.net.title">ქსელური ინჟინერია</h3>
+              <p data-i18n="svc.net.desc">LAN/WAN, Wi‑Fi, VPN, მოწყობილობების კონფიგურაცია და ქსელის სტაბილურობა.</p>
+              <span class="feature-card-more" data-i18n="svc.net.more">დეტალურად →</span>
+            </a>
+          </li>
+          <li>
+            <a href="service-systems.html" class="feature-card feature-card-link">
+              <h3 data-i18n="svc.sys.title">სისტემური ადმინისტრირება</h3>
+              <p data-i18n="svc.sys.desc">სერვერები, სამუშაო სადგურები, სარეზერვო კოპიები და ოპერაციული მხარდაჭერა.</p>
+              <span class="feature-card-more" data-i18n="svc.sys.more">დეტალურად →</span>
+            </a>
+          </li>
+          <li>
+            <a href="service-cybersecurity.html" class="feature-card feature-card-link">
+              <h3 data-i18n="svc.sec.title">კიბერუსაფრთხოება</h3>
+              <p data-i18n="svc.sec.desc">წვდომის კონტროლი, პოლიტიკები, სეგმენტაცია და საფრთხეების შემცირება.</p>
+              <span class="feature-card-more" data-i18n="svc.sec.more">დეტალურად →</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="პაკეტები" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-i18n="price.title">პაკეტები და ფასები</h2>
+        <p class="section-subtitle" data-i18n="price.sub">ყველა პაკეტი მოიცავს ელფოსტით კომუნიკაციას და ხელშეკრულების ფარგლებში განსაზღვრულ საათებს.</p>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3 class="price-name" data-i18n="price.basic">ბასიკი</h3>
+            <p class="price-tag"><span class="amount">450</span> <span class="currency">₾</span> <span class="period" data-i18n="price.period">/ თვე</span></p>
+            <ul class="price-list">
+              <li data-i18n="price.b.li1">ელფოსტით მხარდაჭერა (სამუშაო საათებში)</li>
+              <li data-i18n="price.b.li2">2 საათი დისტანციური მომსახურება</li>
+              <li data-i18n="price.b.li3">ძირითადი ქსელური კონსულტაცია</li>
+              <li data-i18n="price.b.li4">პასუხი 48 საათის განმავლობაში</li>
+            </ul>
+            <a href="#კონტაქტი" class="btn btn-outline" data-i18n="price.choose">არჩევა</a>
+          </article>
+          <article class="price-card price-card-featured">
+            <p class="price-ribbon" data-i18n="price.ribbon">რეკომენდებული</p>
+            <h3 class="price-name" data-i18n="price.standard">სტანდარტი</h3>
+            <p class="price-tag"><span class="amount">850</span> <span class="currency">₾</span> <span class="period" data-i18n="price.period">/ თვე</span></p>
+            <ul class="price-list">
+              <li data-i18n="price.s.li1">ყველაფერი „ბასიკიდან“</li>
+              <li data-i18n="price.s.li2">8 საათი დისტანციური + 2 საათი ადგილზე (თბილისი)</li>
+              <li data-i18n="price.s.li3">პრიორიტეტული რიგი</li>
+              <li data-i18n="price.s.li4">პასუხი 24 საათის განმავლობაში</li>
+            </ul>
+            <a href="#კონტაქტი" class="btn btn-primary" data-i18n="price.choose">არჩევა</a>
+          </article>
+          <article class="price-card">
+            <h3 class="price-name" data-i18n="price.premium">პრემიუმი</h3>
+            <p class="price-tag"><span class="amount">1350</span> <span class="currency">₾</span> <span class="period" data-i18n="price.period">/ თვე</span></p>
+            <ul class="price-list">
+              <li data-i18n="price.p.li1">ყველაფერი „სტანდარტიდან“</li>
+              <li data-i18n="price.p.li2">20 საათი დისტანციური + 6 საათი ადგილზე</li>
+              <li data-i18n="price.p.li3">პროაქტიული მონიტორინგი (შეთანხმებით)</li>
+              <li data-i18n="price.p.li4">პასუხი 8 საათის განმავლობაში (სამუშაო დღეებში)</li>
+            </ul>
+            <a href="#კონტაქტი" class="btn btn-outline" data-i18n="price.choose">არჩევა</a>
+          </article>
+        </div>
+        <p class="pricing-note" data-i18n="price.note">ფასები შეიძლება მოერგოს ობიექტის ზომას და SLA-ს. დეტალებისთვის დაგვიკავშირდით.</p>
+      </div>
+    </section>
+
+    <section id="ჩვენს-შესახებ" class="section">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title" data-i18n="about.title">ჩვენს შესახებ</h2>
+          <p data-i18n="about.p1" data-i18n-html>
+            <strong>TechSol Georgia</strong> (<code class="inline-code">techsol-georgia</code>) ემსახურება იმ კომპანიებს და კერძო კლიენტებს,
+            რომელთაც სჭირდებათ საიმედო IT ინფრასტრუქტურა — ქსელიდან სისტემურ კონფიგურაციამდე.
+          </p>
+          <p data-i18n="about.p2">
+            გუნდს ჰყავს გამოცდილება დიდ ორგანიზაციებში IT მენეჯმენტისა და ქსელური ინჟინერიის მიმართულებით.
+          </p>
+        </div>
+        <div class="about-highlight">
+          <h3 data-i18n="about.why">რატომ ჩვენ</h3>
+          <ul>
+            <li data-i18n="about.w1">დისტანციური და ადგილზე მომსახურება</li>
+            <li data-i18n="about.w2">გამჭვირვალე პაკეტები და ფასები</li>
+            <li data-i18n="about.w3">კომუნიკაცია ელფოსტით — სწრაფად და დოკუმენტირებულად</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="კონტაქტი" class="section section-alt">
+      <div class="container contact-wrap">
+        <div class="contact-intro">
+          <h2 class="section-title" data-i18n="contact.title">დაგვიკავშირდით</h2>
+          <p class="section-subtitle" data-i18n="contact.sub">
+            შეავსეთ ფორმა — შეტყობინება მოგივიდებათ ელფოსტაზე. შეგიძლიათ ასევე პირდაპირ მოგვწეროთ.
+          </p>
+          <p class="contact-email">
+            <span data-i18n="contact.emailLabel">ელფოსტა:</span>
+            <a href="mailto:z.jurkhadze@gmail.com">z.jurkhadze@gmail.com</a>
+          </p>
+          <p class="contact-form-note" data-i18n="contact.formNote">
+            ფორმის გასაგზავნად საიტი უნდა იყოს ატვირთული ინტერნეტზე (ან ლოკალური სერვერი). ფაილის ორდინარულად გახსნა ხშირად არ მუშაობს. შეამოწმეთ სპამი; პირველ გაგზავნაზე FormSubmit გიგზავნით აქტივაციის ბმულს — უნდა დაადასტუროთ.
+          </p>
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/z.jurkhadze@gmail.com" method="POST">
+          <input type="hidden" name="_url" id="tsg-formsubmit-url" value="" />
+          <input type="hidden" name="_subject" value="TechSol Georgia — ახალი მიმართვა" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <label>
+            <span data-i18n="form.name">სახელი</span>
+            <input type="text" name="name" required data-i18n-placeholder="ph.name" placeholder="თქვენი სახელი" />
+          </label>
+          <label>
+            <span data-i18n="form.email">ელფოსტა</span>
+            <input type="email" name="email" required data-i18n-placeholder="ph.email" placeholder="you@company.ge" />
+          </label>
+          <label>
+            <span data-i18n="form.company">კომპანია (არასავალდებულო)</span>
+            <input type="text" name="company" data-i18n-placeholder="ph.company" placeholder="საიურიდიო ან კერძო" />
+          </label>
+          <label>
+            <span data-i18n="form.message">შეტყობინება</span>
+            <textarea name="message" rows="5" required data-i18n-placeholder="ph.message" placeholder="მოკლედ აღწერეთ საჭიროება..."></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="form.submit">გაგზავნა</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">TS</span>
+        <div>
+          <strong>TechSol Georgia</strong>
+          <p class="footer-tag" data-i18n="footer.tag">techsol-georgia · IT ინფრასტრუქტურის მომსახურება</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:z.jurkhadze@gmail.com">z.jurkhadze@gmail.com</a>
+        <span class="footer-dot">·</span>
+        <span data-i18n="footer.city">თბილისი, საქართველო</span>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> <span data-i18n="footer.copy">TechSol Georgia. ყველა უფლება დაცულია.</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
