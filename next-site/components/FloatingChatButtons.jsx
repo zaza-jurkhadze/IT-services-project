@@ -31,17 +31,14 @@ function syncFloatingChatInsets(el) {
   if (!vv) {
     el.style.setProperty("--fab-layout-gap-right", "0px");
     el.style.setProperty("--fab-layout-gap-bottom", "0px");
-    el.style.setProperty("--fab-layout-gap-left", "0px");
     return;
   }
   const iw = window.innerWidth;
   const ih = window.innerHeight;
   const gapRight = Math.max(0, Math.round(iw - vv.offsetLeft - vv.width));
   const gapBottom = Math.max(0, Math.round(ih - vv.offsetTop - vv.height));
-  const gapLeft = Math.max(0, Math.round(vv.offsetLeft));
   el.style.setProperty("--fab-layout-gap-right", `${gapRight}px`);
   el.style.setProperty("--fab-layout-gap-bottom", `${gapBottom}px`);
-  el.style.setProperty("--fab-layout-gap-left", `${gapLeft}px`);
 }
 
 export function FloatingChatButtons() {
