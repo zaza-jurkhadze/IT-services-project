@@ -28,10 +28,14 @@ html[lang="en"] body {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  width: 100%;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: clip;
   font-family: var(--font);
   background: var(--bg);
   color: var(--text);
@@ -1089,15 +1093,42 @@ html[lang="en"] .hero h1 {
   color: var(--muted);
 }
 
-/* Floating chat buttons */
+/* Floating chat: safe-area + JS-driven --fab-* gaps for Visual Viewport (Messenger / WhatsApp IAB) */
 .floating-chat {
+  --fab-layout-gap-right: 0px;
+  --fab-layout-gap-bottom: 0px;
+  --fab-layout-gap-left: 0px;
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
   z-index: 130;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  right: calc(
+    1rem + env(safe-area-inset-right, 0px) + var(--fab-layout-gap-right)
+  );
+  left: auto;
+  bottom: calc(
+    1rem + env(safe-area-inset-bottom, 0px) + var(--fab-layout-gap-bottom)
+  );
+  box-sizing: border-box;
+}
+
+/* Narrow viewports: anchor left — many in-app WebViews clip the right edge */
+@media (max-width: 768px) {
+  .floating-chat {
+    right: auto;
+    left: calc(
+      1.35rem + env(safe-area-inset-left, 0px) + var(--fab-layout-gap-left)
+    );
+    bottom: calc(
+      1.35rem + env(safe-area-inset-bottom, 0px) + var(--fab-layout-gap-bottom)
+    );
+  }
+
+  .floating-chat-link {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 
 .floating-chat-link {

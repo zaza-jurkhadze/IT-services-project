@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { SOCIAL_LINKS } from "@/constants";
 
 function IconMessenger() {
@@ -24,9 +25,51 @@ function IconWhatsApp() {
   );
 }
 
+function syncFloatingChatInsets(el) {
+  if (!el || typeof window === "undefined") return;
+  const vv = window.visualViewport;
+  if (!vv) {
+    el.style.setProperty("--fab-layout-gap-right", "0px");
+    el.style.setProperty("--fab-layout-gap-bottom", "0px");
+    el.style.setProperty("--fab-layout-gap-left", "0px");
+    return;
+  }
+  const iw = window.innerWidth;
+  const ih = window.innerHeight;
+  const gapRight = Math.max(0, Math.round(iw - vv.offsetLeft - vv.width));
+  const gapBottom = Math.max(0, Math.round(ih - vv.offsetTop - vv.height));
+  const gapLeft = Math.max(0, Math.round(vv.offsetLeft));
+  el.style.setProperty("--fab-layout-gap-right", `${gapRight}px`);
+  el.style.setProperty("--fab-layout-gap-bottom", `${gapBottom}px`);
+  el.style.setProperty("--fab-layout-gap-left", `${gapLeft}px`);
+}
+
 export function FloatingChatButtons() {
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+
+    const run = () => syncFloatingChatInsets(el);
+    run();
+
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", run);
+    vv?.addEventListener("scroll", run);
+    window.addEventListener("resize", run);
+    window.addEventListener("orientationchange", run);
+
+    return () => {
+      vv?.removeEventListener("resize", run);
+      vv?.removeEventListener("scroll", run);
+      window.removeEventListener("resize", run);
+      window.removeEventListener("orientationchange", run);
+    };
+  }, []);
+
   return (
-    <div className="floating-chat" aria-label="Quick chat links">
+    <div ref={rootRef} className="floating-chat" aria-label="Quick chat links">
       <a
         href={SOCIAL_LINKS.messenger}
         className="floating-chat-link"
