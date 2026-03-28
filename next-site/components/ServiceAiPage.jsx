@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useLang } from "@/context/LangContext";
 
+const WORK_KEYS = [1, 2, 3, 4];
+
 export default function ServiceAiPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  useEffect(() => {
+    document.title = `${t("svc.ai.title")} | TechSol Georgia`;
+  }, [t, lang]);
 
   return (
     <main>
@@ -12,54 +19,33 @@ export default function ServiceAiPage() {
         <div className="container">
           <p className="breadcrumb">
             <Link href="/">{t("nav.home")}</Link> /{" "}
-            <Link href="/#სერვისები">{t("nav.services")}</Link> / AI
+            <Link href="/#სერვისები">{t("nav.services")}</Link> /{" "}
+            {t("svc.ai.title")}
           </p>
           <h1>{t("svc.ai.title")}</h1>
           <p className="section-subtitle" style={{ margin: 0, maxWidth: "50ch" }}>
-            უსაფრთხო და პრაქტიკული AI გამოყენება ოფისის ყოველდღიურ სამუშაოში.
+            {t("svc.ai.detail.lead")}
           </p>
         </div>
       </div>
 
       <section className="prose-section">
         <div className="container prose">
-          <h2>რას ვაკეთებთ ამ მიმართულებით</h2>
-          <p>
-            ხელოვნური ინტელექტის ინსტრუმენტები უკვე ნაწილია ბევრი პროცესისა.
-            ჩვენ გეხმარებით აირჩიოთ შესაბამისი პლატფორმები, დააყენოთ წესები
-            (დოკუმენტების კონფიდენციალურობა, წვდომა), მოამზადოთ პრომპტები და
-            მცირე ავტომატიზაციები — რათა გუნდმა დრო დაზოგოს და რისკები იყოს
-            კონტროლქვეშ.
-          </p>
+          <h2>{t("svc.ai.detail.h2_what")}</h2>
+          <p>{t("svc.ai.detail.p_what")}</p>
 
-          <h2>ძირითადი სამუშაოები</h2>
+          <h2>{t("svc.ai.detail.h2_work")}</h2>
           <ul>
-            <li>
-              <strong>პოლიტიკა და უსაფრთხოება</strong> — რა მონაცემი შეიძლება
-              იყოს AI-ში, როგორ გამოვიყენოთ კორპორატიული ანგარიშები და რა
-              ლოგირებაა საჭირო.
-            </li>
-            <li>
-              <strong>პრომპტები და შაბლონები</strong> — სტანდარტიზებული
-              ინსტრუქციები ხშირი ამოცანებისთვის (რეზიუმეები, ანგარიშები,
-              ელფოსტის ნაბეჭდი ვერსიები).
-            </li>
-            <li>
-              <strong>ინტეგრაცია</strong> — სამუშაო პროცესებთან მიერთება
-              (ელფოსტა, ცხრილები, ჩატ-ბოტები შეთანხმებით).
-            </li>
-            <li>
-              <strong>სწავლება</strong> — მოკლე სესიები თანამშრომლებისთვის
-              პასუხისმგებლი გამოყენების შესახებ.
-            </li>
+            {WORK_KEYS.map((n) => (
+              <li key={n}>
+                <strong>{t(`svc.ai.detail.work.li${n}.b`)}</strong>
+                {t(`svc.ai.detail.work.li${n}.t`)}
+              </li>
+            ))}
           </ul>
 
-          <h2>ვინ სარგებლობს</h2>
-          <p>
-            ოფისები, სადაც სურთ AI-ს სარგებლობა დოკუმენტებისა და კომუნიკაციის
-            დასაჩქარებლად, მაგრამ სჭირდებათ ნათელი წესები და ტექნიკური
-            მხარდაჭერა.
-          </p>
+          <h2>{t("svc.ai.detail.h2_who")}</h2>
+          <p>{t("svc.ai.detail.p_who")}</p>
 
           <div className="prose-cta">
             <a href="/#კონტაქტი" className="btn btn-primary">

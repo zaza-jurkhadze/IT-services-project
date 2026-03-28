@@ -16,7 +16,8 @@ export const CONTACT_PHONE_DISPLAY = "+995 595 53 10 07";
 export const CONTACT_PHONE_TEL = "+995595531007";
 
 export const SOCIAL_LINKS = {
-  messenger: "https://www.facebook.com/techsolgeorgia",
+  facebook: "https://www.facebook.com/61588309154828",
+  messenger: "https://m.me/61588309154828",
   linkedin: "https://www.linkedin.com/company/techsol-georgia",
   instagram: "https://www.instagram.com/techsolgeorgia",
   whatsapp: `https://wa.me/${CONTACT_PHONE_TEL.replace(/\D/g, "")}`,

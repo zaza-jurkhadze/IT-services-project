@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useLang } from "@/context/LangContext";
 
+const WORK_KEYS = [1, 2, 3, 4];
+
 export default function ServiceMonitoringPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  useEffect(() => {
+    document.title = `${t("svc.mon.title")} | TechSol Georgia`;
+  }, [t, lang]);
 
   return (
     <main>
@@ -17,29 +24,21 @@ export default function ServiceMonitoringPage() {
           </p>
           <h1>{t("svc.mon.title")}</h1>
           <p className="section-subtitle" style={{ margin: 0, maxWidth: "50ch" }}>
-            უწყვეტი მონიტორინგი, ალარმები და პერიოდული IT აუდიტი.
+            {t("svc.mon.detail.lead")}
           </p>
         </div>
       </div>
 
       <section className="prose-section">
         <div className="container prose">
-          <h2>რას ვაკეთებთ</h2>
+          <h2>{t("svc.mon.detail.h2_work")}</h2>
           <ul>
-            <li>
-              <strong>24/7 მონიტორინგი</strong> — ხელმისაწვდომობა, რესურსები,
-              კრიტიკული სერვისები.
-            </li>
-            <li>
-              <strong>ხელსაწყოები</strong> — Zabbix, PRTG, Nagios (შეთანხმებით).
-            </li>
-            <li>
-              <strong>SLA ანგარიშგება</strong> — მეტრიკები და ტრენდები.
-            </li>
-            <li>
-              <strong>პროაქტიული IT Audit</strong> — ხარვეზების აღმოჩენა სანამ
-              ინციდენტი მოხდება.
-            </li>
+            {WORK_KEYS.map((n) => (
+              <li key={n}>
+                <strong>{t(`svc.mon.detail.work.li${n}.b`)}</strong>
+                {t(`svc.mon.detail.work.li${n}.t`)}
+              </li>
+            ))}
           </ul>
 
           <div className="prose-cta">

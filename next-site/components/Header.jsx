@@ -88,6 +88,9 @@ export function Header() {
             <Link href="/about" onClick={closeNav}>
               {t("nav.about")}
             </Link>
+            <a href={sectionHref(isHome, "კონტაქტი")} onClick={closeNav}>
+              {t("nav.contactNav")}
+            </a>
           </nav>
           <div
             className="lang-switch"
@@ -113,7 +116,7 @@ export function Header() {
           </div>
           <div className="header-social" aria-label="Social links">
             <a
-              href={SOCIAL_LINKS.messenger}
+              href={SOCIAL_LINKS.facebook}
               className="header-social-link header-social-link--facebook"
               target="_blank"
               rel="noopener noreferrer"

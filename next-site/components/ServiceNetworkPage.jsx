@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useLang } from "@/context/LangContext";
 
+const WORK_KEYS = [1, 2, 3, 4, 5];
+
 export default function ServiceNetworkPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  useEffect(() => {
+    document.title = `${t("svc.net.title")} | TechSol Georgia`;
+  }, [t, lang]);
 
   return (
     <main>
@@ -12,56 +19,33 @@ export default function ServiceNetworkPage() {
         <div className="container">
           <p className="breadcrumb">
             <Link href="/">{t("nav.home")}</Link> /{" "}
-            <Link href="/#სერვისები">{t("nav.services")}</Link> / ქსელური
-            ინჟინერია
+            <Link href="/#სერვისები">{t("nav.services")}</Link> /{" "}
+            {t("svc.net.title")}
           </p>
-          <h1>ქსელური ინჟინერია</h1>
+          <h1>{t("svc.net.title")}</h1>
           <p className="section-subtitle" style={{ margin: 0, maxWidth: "50ch" }}>
-            სტაბილური და მასშტაბირებადი ქსელი — ოფისიდან ფილიალებამდე.
+            {t("svc.net.detail.lead")}
           </p>
         </div>
       </div>
 
       <section className="prose-section">
         <div className="container prose">
-          <h2>რას ვაკეთებთ ამ მიმართულებით</h2>
-          <p>
-            ქსელური ინჟინერია მოიცავს თქვენი ინფრასტრუქტურის პროექტირებას,
-            კონფიგურაციას, დიაგნოსტიკას და განვითარებას. მიზანია, რომ
-            მონაცემები და სერვისები იყოს სწრაფი, ხელმისაწვდომი და გამჭვირვალე
-            მონიტორინგისთვის გასაგები.
-          </p>
+          <h2>{t("svc.net.detail.h2_what")}</h2>
+          <p>{t("svc.net.detail.p_what")}</p>
 
-          <h2>ძირითადი სამუშაოები</h2>
+          <h2>{t("svc.net.detail.h2_work")}</h2>
           <ul>
-            <li>
-              <strong>LAN / შიდა ქსელი</strong> — სვიჩები, VLAN-ები, ლინკების
-              აგრეგაცია, პორტებისა და ტრაფიკის ოპტიმიზაცია.
-            </li>
-            <li>
-              <strong>Wi‑Fi</strong> — კავშირის გეგმა, წერტილების განთავსება,
-              SSID და უსაფრთხოების პოლიტიკები, ინტერფერენციის შემცირება.
-            </li>
-            <li>
-              <strong>ინტერნეტი და მარშრუტიზაცია</strong> — როუტერები, NAT,
-              პორტების გადამისამართება, ორმაგი ხაზი (შეთანხმებით).
-            </li>
-            <li>
-              <strong>VPN</strong> — დისტანციური წვდომა ფილიალებსა და მობილურ
-              მომხმარებლებზე, უსაფრთხო ტუნელები.
-            </li>
-            <li>
-              <strong>დიაგნოსტიკა</strong> — ჩაჭედილი სიჩქარე, კავშირის ვარდნა,
-              DNS/DHCP პრობლემები, ლოგებისა და მონიტორინგის ანალიზი.
-            </li>
+            {WORK_KEYS.map((n) => (
+              <li key={n}>
+                <strong>{t(`svc.net.detail.work.li${n}.b`)}</strong>
+                {t(`svc.net.detail.work.li${n}.t`)}
+              </li>
+            ))}
           </ul>
 
-          <h2>ვინ სარგებლობს</h2>
-          <p>
-            ოფისები, კლინიკები, საცალო ქსელები, პატარა და საშუალო საიურიდიო
-            პირები, ასევე კერძო სახლები სადაც საჭიროა საიმედო ქსელი და
-            დისტანციური მხარდაჭერა.
-          </p>
+          <h2>{t("svc.net.detail.h2_who")}</h2>
+          <p>{t("svc.net.detail.p_who")}</p>
 
           <div className="prose-cta">
             <a href="/#კონტაქტი" className="btn btn-primary">

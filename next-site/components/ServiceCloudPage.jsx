@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useLang } from "@/context/LangContext";
 
+const WORK_KEYS = [1, 2, 3, 4, 5];
+
 export default function ServiceCloudPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  useEffect(() => {
+    document.title = `${t("svc.cld.title")} | TechSol Georgia`;
+  }, [t, lang]);
 
   return (
     <main>
@@ -12,39 +19,26 @@ export default function ServiceCloudPage() {
         <div className="container">
           <p className="breadcrumb">
             <Link href="/">{t("nav.home")}</Link> /{" "}
-            <Link href="/#სერვისები">{t("nav.services")}</Link> / Cloud
+            <Link href="/#სერვისები">{t("nav.services")}</Link> /{" "}
+            {t("svc.cld.title")}
           </p>
           <h1>{t("svc.cld.title")}</h1>
           <p className="section-subtitle" style={{ margin: 0, maxWidth: "50ch" }}>
-            Microsoft Azure, Microsoft 365, ჰიბრიდული მოდელი და სარეზერვო სტრატეგია.
+            {t("svc.cld.detail.lead")}
           </p>
         </div>
       </div>
 
       <section className="prose-section">
         <div className="container prose">
-          <h2>რას ვაკეთებთ</h2>
+          <h2>{t("svc.cld.detail.h2_work")}</h2>
           <ul>
-            <li>
-              <strong>Microsoft Azure</strong> — რესურსების გეგმა, განთავსება,
-              ღირებულების ოპტიმიზაცია.
-            </li>
-            <li>
-              <strong>Microsoft 365</strong> — ლიცენზიები, უსაფრთხოება, ელფოსტა და
-              თანამშრომლობა.
-            </li>
-            <li>
-              <strong>Hybrid Cloud</strong> — ონპრემისი + Azure, ინტეგრაცია და
-              რეპლიკაცია.
-            </li>
-            <li>
-              <strong>Cloud Backup &amp; DR</strong> — სარეზერვო პოლიტიკები და
-              აღდგენის ტესტები.
-            </li>
-            <li>
-              <strong>Azure AD / SSO</strong> — ერთიანი ანგარიშები და წვდომის
-              მართვა.
-            </li>
+            {WORK_KEYS.map((n) => (
+              <li key={n}>
+                <strong>{t(`svc.cld.detail.work.li${n}.b`)}</strong>
+                {t(`svc.cld.detail.work.li${n}.t`)}
+              </li>
+            ))}
           </ul>
 
           <div className="prose-cta">

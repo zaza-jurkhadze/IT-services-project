@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useLang } from "@/context/LangContext";
 
+const WORK_KEYS = [1, 2, 3, 4, 5, 6];
+
 export default function ServiceSystemsPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  useEffect(() => {
+    document.title = `${t("svc.sys.title")} | TechSol Georgia`;
+  }, [t, lang]);
 
   return (
     <main>
@@ -12,63 +19,33 @@ export default function ServiceSystemsPage() {
         <div className="container">
           <p className="breadcrumb">
             <Link href="/">{t("nav.home")}</Link> /{" "}
-            <Link href="/#სერვისები">{t("nav.services")}</Link> / სისტემური
-            ადმინისტრირება
+            <Link href="/#სერვისები">{t("nav.services")}</Link> /{" "}
+            {t("svc.sys.title")}
           </p>
-          <h1>სისტემური ადმინისტრირება</h1>
+          <h1>{t("svc.sys.title")}</h1>
           <p className="section-subtitle" style={{ margin: 0, maxWidth: "50ch" }}>
-            სერვერები და სამუშაო ადგილები — სტაბილური, განახლებული და
-            აღდგენადი.
+            {t("svc.sys.detail.lead")}
           </p>
         </div>
       </div>
 
       <section className="prose-section">
         <div className="container prose">
-          <h2>რას ვაკეთებთ ამ მიმართულებით</h2>
-          <p>
-            სისტემური ადმინისტრირება უზრუნველყოფს თქვენი IT გარემოს ყოველდღიურ
-            მუშაობას: სერვერებისა და სამუშაო სადგურების კონფიგურაცია,
-            მომხმარებლების მხარდაჭერა, განახლებები და ინციდენტებზე
-            რეაგირება — დისტანციურად ან ადგილზე.
-          </p>
+          <h2>{t("svc.sys.detail.h2_what")}</h2>
+          <p>{t("svc.sys.detail.p_what")}</p>
 
-          <h2>ძირითადი სამუშაოები</h2>
+          <h2>{t("svc.sys.detail.h2_work")}</h2>
           <ul>
-            <li>
-              <strong>სერვერები</strong> — Windows Server / Linux სერვისების
-              დაყენება, როლები, განახლებები, რესურსების მონიტორინგი.
-            </li>
-            <li>
-              <strong>დომენი და იდენტობა</strong> — Active Directory
-              (საჭიროებისამებრ), მომხმარებლები, ჯგუფები, პოლიტიკები.
-            </li>
-            <li>
-              <strong>სამუშაო სადგურები</strong> — ოპერაციული სისტემა,
-              დრაივერები, ოფისის პროგრამები, პრინტერები და პერიფერია.
-            </li>
-            <li>
-              <strong>სარეზერვო კოპიები</strong> — გეგმის შედგენა და
-              კონფიგურაცია, აღდგენის ტესტირება (შეთანხმებით).
-            </li>
-            <li>
-              <strong>ვირტუალიზაცია</strong> — Hyper-V / VMware / Proxmox
-              მიმართულებით ძირითადი ამოცანები, სადაც ეს შეესაბამება
-              ინფრასტრუქტურას.
-            </li>
-            <li>
-              <strong>ოპერაციული მხარდაჭერა</strong> — ინციდენტები, ტიკეტინგი
-              ელფოსტით, პრიორიტეტები SLA-ის მიხედვით.
-            </li>
+            {WORK_KEYS.map((n) => (
+              <li key={n}>
+                <strong>{t(`svc.sys.detail.work.li${n}.b`)}</strong>
+                {t(`svc.sys.detail.work.li${n}.t`)}
+              </li>
+            ))}
           </ul>
 
-          <h2>რატომ ეს მნიშვნელოვანია</h2>
-          <p>
-            გაჩერებული სერვერი ან დაკარგული მონაცემები პირდაპირ ზრდის
-            დანახარჯებს და აფერხებს ბიზნეს პროცესებს. სისტემური
-            ადმინისტრირება ამცირებს გაუთვალისწინებელ შვებულებებს და ხსნის
-            თქვენს გუნდს ტექნიკური ტვირთისგან.
-          </p>
+          <h2>{t("svc.sys.detail.h2_why")}</h2>
+          <p>{t("svc.sys.detail.p_why")}</p>
 
           <div className="prose-cta">
             <a href="/#კონტაქტი" className="btn btn-primary">

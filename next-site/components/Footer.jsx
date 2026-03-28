@@ -50,7 +50,7 @@ export function Footer() {
 
   const social = [
     {
-      href: SOCIAL_LINKS.messenger,
+      href: SOCIAL_LINKS.facebook,
       label: t("footer.aria.messenger"),
       Icon: IconMessenger,
       className: "footer-social-link--facebook",

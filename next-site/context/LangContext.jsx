@@ -6,31 +6,63 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
 } from "react";
 import { STR } from "@/i18n/strings";
 
 const LangContext = createContext(null);
 
-export function LangProvider({ children }) {
-  const [lang, setLangState] = useState(() => {
-    try {
-      const s = localStorage.getItem("tsg-lang");
-      if (s === "en" || s === "ka") return s;
-    } catch {
-      /* ignore */
+const LANG_KEY = "tsg-lang";
+
+function getStoredLang() {
+  if (typeof window === "undefined") return "ka";
+  try {
+    const s = localStorage.getItem(LANG_KEY);
+    if (s === "en" || s === "ka") return s;
+  } catch {
+    /* ignore */
+  }
+  return "ka";
+}
+
+let listeners = new Set();
+
+function emit() {
+  for (const l of [...listeners]) l();
+}
+
+function subscribe(listener) {
+  const onStorage = (e) => {
+    if (e.key === LANG_KEY || e.key === null) listener();
+  };
+  if (typeof window !== "undefined") {
+    window.addEventListener("storage", onStorage);
+  }
+  listeners.add(listener);
+  return () => {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("storage", onStorage);
     }
-    return "ka";
-  });
+    listeners.delete(listener);
+  };
+}
+
+/** სერვერსა და ჰიდრატაციის პირველ პასუხს ყოველთვის "ka" — თავიდან აიცილებს hydration mismatch-ს */
+function getServerLang() {
+  return "ka";
+}
+
+export function LangProvider({ children }) {
+  const lang = useSyncExternalStore(subscribe, getStoredLang, getServerLang);
 
   const setLang = useCallback((l) => {
     if (l !== "en" && l !== "ka") return;
-    setLangState(l);
     try {
-      localStorage.setItem("tsg-lang", l);
+      localStorage.setItem(LANG_KEY, l);
     } catch {
       /* ignore */
     }
+    emit();
   }, []);
 
   useEffect(() => {

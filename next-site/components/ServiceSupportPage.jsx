@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useLang } from "@/context/LangContext";
 
+const WORK_KEYS = [1, 2, 3, 4, 5];
+
 export default function ServiceSupportPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  useEffect(() => {
+    document.title = `${t("svc.sup.title")} | TechSol Georgia`;
+  }, [t, lang]);
 
   return (
     <main>
@@ -17,35 +24,21 @@ export default function ServiceSupportPage() {
           </p>
           <h1>{t("svc.sup.title")}</h1>
           <p className="section-subtitle" style={{ margin: 0, maxWidth: "50ch" }}>
-            Help Desk დისტანციურად და ადგილზე — SLA-ს მიხედვით.
+            {t("svc.sup.detail.lead")}
           </p>
         </div>
       </div>
 
       <section className="prose-section">
         <div className="container prose">
-          <h2>რას ვაკეთებთ</h2>
+          <h2>{t("svc.sup.detail.h2_work")}</h2>
           <ul>
-            <li>
-              <strong>Help Desk</strong> — დისტანციური და ადგილზე მხარდაჭერა,
-              ინციდენტების რიგი.
-            </li>
-            <li>
-              <strong>აპარატურა</strong> — მონტაჟი, გამოცვლა, საგარანტიო პერიოდის
-              კოორდინაცია.
-            </li>
-            <li>
-              <strong>Structured Cabling</strong> — პაჩპანელები, ეტიკეტირება,
-              დოკუმენტაცია.
-            </li>
-            <li>
-              <strong>UPS და ელექტრო უსაფრთხოება</strong> — შემოწმება და
-              შეთანხმებული მომსახურება.
-            </li>
-            <li>
-              <strong>SLA</strong> — პასუხის დროები და ანგარიშგება ხელშეკრულების
-              მიხედვით.
-            </li>
+            {WORK_KEYS.map((n) => (
+              <li key={n}>
+                <strong>{t(`svc.sup.detail.work.li${n}.b`)}</strong>
+                {t(`svc.sup.detail.work.li${n}.t`)}
+              </li>
+            ))}
           </ul>
 
           <div className="prose-cta">
