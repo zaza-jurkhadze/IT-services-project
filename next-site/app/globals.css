@@ -62,9 +62,14 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 100;
+  isolation: isolate;
   background: rgba(11, 18, 32, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+}
+
+.nav-backdrop {
+  display: none;
 }
 
 .header-inner {
@@ -282,6 +287,24 @@ a:hover {
     border-left: 0;
   }
 
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgba(11, 18, 32, 0.55);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 2;
+  }
+
   .main-nav {
     position: fixed;
     inset: 4rem 1rem auto;
@@ -299,6 +322,7 @@ a:hover {
   }
 
   .main-nav.is-open {
+    z-index: 3;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -974,6 +998,10 @@ html[lang="en"] .hero h1 {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+}
+
+.footer-brand > div {
+  min-width: 0;
 }
 
 .footer-logo-img {

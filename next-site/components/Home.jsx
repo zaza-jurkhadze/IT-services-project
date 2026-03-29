@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useLang } from "@/context/LangContext";
 import HeroSketch from "@/components/HeroSketch";
 import { CONTACT_EMAIL, FORMSUBMIT_ACTION } from "@/constants";
@@ -11,10 +11,27 @@ const PRICE_BASIC_KEYS = [1, 2, 3, 4, 5, 6];
 const PRICE_STD_KEYS = [1, 2, 3, 4, 5, 6, 7, 8];
 const PRICE_PREM_KEYS = [1, 2, 3, 4, 5, 6];
 
+function scrollToHashFromLocation() {
+  if (typeof window === "undefined") return;
+  const hash = window.location.hash;
+  if (!hash) return;
+  let id;
+  try {
+    id = decodeURIComponent(hash.slice(1));
+  } catch {
+    id = hash.slice(1);
+  }
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
 export default function Home() {
   const { t, lang } = useLang();
   const urlFieldRef = useRef(null);
   const nextFieldRef = useRef(null);
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const sentOk = searchParams.get("sent") === "1";
 
@@ -38,6 +55,20 @@ export default function Home() {
       nextFieldRef.current.value = `${base.split("#")[0]}?sent=1#კონტაქტი`;
     }
   }, []);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    scrollToHashFromLocation();
+    const t1 = setTimeout(scrollToHashFromLocation, 100);
+    const t2 = setTimeout(scrollToHashFromLocation, 350);
+    const onHashChange = () => scrollToHashFromLocation();
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, [pathname]);
 
   const subject =
     lang === "en"

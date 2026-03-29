@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
@@ -10,10 +10,6 @@ import {
   LOGO_WIDTH,
   SOCIAL_LINKS,
 } from "@/constants";
-
-function sectionHref(isHome, id) {
-  return isHome ? `#${id}` : `/#${id}`;
-}
 
 function IconFacebook() {
   return (
@@ -56,8 +52,23 @@ export function Header() {
 
   const closeNav = () => setNavOpen(false);
 
+  useEffect(() => {
+    if (!navOpen) return;
+    const onScroll = () => setNavOpen(false);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [navOpen]);
+
   return (
     <header className="site-header">
+      {navOpen ? (
+        <button
+          type="button"
+          className="nav-backdrop"
+          aria-label={t("nav.closeBackdrop")}
+          onClick={closeNav}
+        />
+      ) : null}
       <div className="container header-inner">
         <Link href="/" className="logo logo--full" id="top" onClick={closeNav}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -79,18 +90,36 @@ export function Header() {
             <Link href="/" onClick={closeNav}>
               {t("nav.home")}
             </Link>
-            <a href={sectionHref(isHome, "სერვისები")} onClick={closeNav}>
-              {t("nav.services")}
-            </a>
-            <a href={sectionHref(isHome, "პაკეტები")} onClick={closeNav}>
-              {t("nav.packages")}
-            </a>
+            {isHome ? (
+              <a href="#სერვისები" onClick={closeNav}>
+                {t("nav.services")}
+              </a>
+            ) : (
+              <Link href="/#სერვისები" scroll={false} onClick={closeNav}>
+                {t("nav.services")}
+              </Link>
+            )}
+            {isHome ? (
+              <a href="#პაკეტები" onClick={closeNav}>
+                {t("nav.packages")}
+              </a>
+            ) : (
+              <Link href="/#პაკეტები" scroll={false} onClick={closeNav}>
+                {t("nav.packages")}
+              </Link>
+            )}
             <Link href="/about" onClick={closeNav}>
               {t("nav.about")}
             </Link>
-            <a href={sectionHref(isHome, "კონტაქტი")} onClick={closeNav}>
-              {t("nav.contactNav")}
-            </a>
+            {isHome ? (
+              <a href="#კონტაქტი" onClick={closeNav}>
+                {t("nav.contactNav")}
+              </a>
+            ) : (
+              <Link href="/#კონტაქტი" scroll={false} onClick={closeNav}>
+                {t("nav.contactNav")}
+              </Link>
+            )}
           </nav>
           <div
             className="lang-switch"

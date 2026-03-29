@@ -8,6 +8,7 @@ export const STR = {
     "nav.contact": "დაგვიკავშირდით",
     "nav.contactNav": "კონტაქტი",
     "nav.toggle": "მენიუს გახსნა",
+    "nav.closeBackdrop": "მენიუს დახურვა",
     "lang.label": "ენა",
     "hero.title": "თანამედროვე IT ინფრასტრუქტურა",
     "hero.lead1":
@@ -399,6 +400,7 @@ export const STR = {
     "nav.contact": "Contact us",
     "nav.contactNav": "Contact",
     "nav.toggle": "Open menu",
+    "nav.closeBackdrop": "Close menu",
     "lang.label": "Language",
     "hero.title": "Modern IT infrastructure",
     "hero.lead1":
