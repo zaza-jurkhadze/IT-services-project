@@ -118,7 +118,7 @@ export const STR = {
     "form.submit": "გაგზავნა",
     "ph.name": "თქვენი სახელი", 
     "ph.email": "you@company.ge",
-    "ph.company": "საიურიდიო ან კერძო",
+    "ph.company": "კომპანიის სახელი",
     "ph.message": "მოკლედ აღწერეთ საჭიროება...",
     "footer.brandTitle": "TechSol Georgia",
     "footer.tag": "techsol-georgia · IT ინფრასტრუქტურის მომსახურება",
