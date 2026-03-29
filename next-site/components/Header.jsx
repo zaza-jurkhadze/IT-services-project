@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
@@ -57,6 +57,13 @@ export function Header() {
   const isHome = pathname === "/";
 
   const closeNav = () => setNavOpen(false);
+
+  useEffect(() => {
+    if (!navOpen) return;
+    const onScroll = () => setNavOpen(false);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [navOpen]);
 
   const goToSection = useCallback(
     (sectionId) => {
