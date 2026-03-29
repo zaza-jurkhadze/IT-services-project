@@ -77,14 +77,15 @@ export function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={LOGO_PUBLIC_URL}
-              alt="TechSol Georgia"
+              alt={t("footer.brandTitle")}
               className="footer-logo-img"
               width={Math.round(LOGO_WIDTH * 0.85)}
               height={Math.round(LOGO_HEIGHT * 0.85)}
               loading="lazy"
               decoding="async"
             />
-            <div>
+            <div className="footer-brand-text">
+              <p className="footer-brand-title">{t("footer.brandTitle")}</p>
               <p className="footer-tag">{t("footer.tag")}</p>
               <p className="footer-city">{t("footer.city")}</p>
             </div>

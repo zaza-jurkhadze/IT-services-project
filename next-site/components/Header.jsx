@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
@@ -44,6 +44,12 @@ function IconInstagram() {
   );
 }
 
+const SECTION_IDS = {
+  services: "სერვისები",
+  packages: "პაკეტები",
+  contact: "კონტაქტი",
+};
+
 export function Header() {
   const { t, lang, setLang } = useLang();
   const pathname = usePathname();
@@ -52,12 +58,25 @@ export function Header() {
 
   const closeNav = () => setNavOpen(false);
 
-  useEffect(() => {
-    if (!navOpen) return;
-    const onScroll = () => setNavOpen(false);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [navOpen]);
+  const goToSection = useCallback(
+    (sectionId) => {
+      closeNav();
+      if (pathname === "/") {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        window.history.replaceState(
+          null,
+          "",
+          `${window.location.pathname}${window.location.search}#${sectionId}`
+        );
+        return;
+      }
+      window.location.assign(`/#${sectionId}`);
+    },
+    [pathname]
+  );
 
   return (
     <header className="site-header">
@@ -90,36 +109,36 @@ export function Header() {
             <Link href="/" onClick={closeNav}>
               {t("nav.home")}
             </Link>
-            {isHome ? (
-              <a href="#სერვისები" onClick={closeNav}>
-                {t("nav.services")}
-              </a>
-            ) : (
-              <Link href="/#სერვისები" scroll={false} onClick={closeNav}>
-                {t("nav.services")}
-              </Link>
-            )}
-            {isHome ? (
-              <a href="#პაკეტები" onClick={closeNav}>
-                {t("nav.packages")}
-              </a>
-            ) : (
-              <Link href="/#პაკეტები" scroll={false} onClick={closeNav}>
-                {t("nav.packages")}
-              </Link>
-            )}
+            <a
+              href={isHome ? "#სერვისები" : "/#სერვისები"}
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection(SECTION_IDS.services);
+              }}
+            >
+              {t("nav.services")}
+            </a>
+            <a
+              href={isHome ? "#პაკეტები" : "/#პაკეტები"}
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection(SECTION_IDS.packages);
+              }}
+            >
+              {t("nav.packages")}
+            </a>
             <Link href="/about" onClick={closeNav}>
               {t("nav.about")}
             </Link>
-            {isHome ? (
-              <a href="#კონტაქტი" onClick={closeNav}>
-                {t("nav.contactNav")}
-              </a>
-            ) : (
-              <Link href="/#კონტაქტი" scroll={false} onClick={closeNav}>
-                {t("nav.contactNav")}
-              </Link>
-            )}
+            <a
+              href={isHome ? "#კონტაქტი" : "/#კონტაქტი"}
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection(SECTION_IDS.contact);
+              }}
+            >
+              {t("nav.contactNav")}
+            </a>
           </nav>
           <div
             className="lang-switch"
